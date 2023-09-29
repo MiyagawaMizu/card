@@ -1,0 +1,4 @@
+.vscode/settings.json
+.well-known/
+scripts/status-change.js
+.env
