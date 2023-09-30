@@ -60,7 +60,7 @@ a {
 
 a:hover {
   text-decoration: underline;
-  cursor: url('/public/help.png'), auto;
+  cursor: url('../public/help.png'), auto;
 }
 
 /* Remove markdown of button */
@@ -70,13 +70,13 @@ button {
   padding: 0;
   font: inherit;
   outline: inherit;
-  cursor: url('/public/help.png'), auto;
+  cursor: url('../public/help.png'), auto;
 }
 
 body {
   padding: 0;
   margin: 0;
-  cursor: url('/public/cursor.png'), auto;
+  cursor: url('../public/cursor.png'), auto;
 }
 
 .container {
@@ -143,7 +143,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  cursor: url('/public/no.png'), auto;
+  cursor: url('../public/no.png'), auto;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
@@ -162,7 +162,7 @@ body {
   height: 120px;
   border-radius: 50%;
   border: 8px solid var(--avatar-border-color);
-  cursor: url('/public/no.png'), auto;
+  cursor: url('../public/no.png'), auto;
 }
 
 #status {
@@ -448,7 +448,7 @@ body {
 }
 
 #link {
-  cursor: url('/public/help.png'), auto;
+  cursor: url('../public/help.png'), auto;
 }
 
 .connect {
@@ -504,7 +504,7 @@ body {
 
 @media (width <=640px) {
   .container::before {
-    background-image: url("/public/mobile_background.webp");
+    background-image: url("../public/mobile_background.webp");
     margin: -2px;
     filter: blur(2px);
     background-color: rgba(0, 0, 0, 0.5);
