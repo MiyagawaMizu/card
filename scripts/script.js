@@ -37,19 +37,19 @@ async function fetchDiscordStatus() {
 		let imagePath;
 		switch (discord_status) {
 			case "online":
-				imagePath = "/public/status/online.svg";
+				imagePath = "./public/status/online.svg";
 				break;
 			case "idle":
-				imagePath = "/public/status/idle.svg";
+				imagePath = "./public/status/idle.svg";
 				break;
 			case "dnd":
-				imagePath = "/public/status/dnd.svg";
+				imagePath = "./public/status/dnd.svg";
 				break;
 			case "offline":
-				imagePath = "/public/status/offline.svg";
+				imagePath = "./public/status/offline.svg";
 				break;
 			default:
-				imagePath = "/public/status/offline.svg";
+				imagePath = "./public/status/offline.svg";
 				break;
 		}
 
@@ -61,7 +61,7 @@ async function fetchDiscordStatus() {
 						activity.url.includes("youtube.com"))
 			)
 		) {
-			imagePath = "/public/status/streaming.svg";
+			imagePath = "./public/status/streaming.svg";
 		}
 
 		if (banner.id == null) {
@@ -105,16 +105,16 @@ async function fetchDiscordStatus() {
 
 // Mapping badges to their respective images
 const badgeMappings = {
-	HOUSE_BRILLIANCE: "/public/badges/hypesquad-brilliance.svg",
-	ACTIVE_DEVELOPER: "/public/badges/active-developer.svg",
-	HOUSE_BRAVERY: "/public/badges/hypesquad-bravery.svg",
-	HOUSE_BALANCE: "/public/badges/hypesquad-balance.svg",
-	EARLY_SUPPORTER: "/public/badges/early-supporter.svg",
+	HOUSE_BRILLIANCE: "./public/badges/hypesquad-brilliance.svg",
+	ACTIVE_DEVELOPER: "./public/badges/active-developer.svg",
+	HOUSE_BRAVERY: "./public/badges/hypesquad-bravery.svg",
+	HOUSE_BALANCE: "./public/badges/hypesquad-balance.svg",
+	EARLY_SUPPORTER: "./public/badges/early-supporter.svg",
 	EARLY_VERIFIED_BOT_DEVELOPER:
-		"/public/badges/early-verified-bot-developer.svg",
-	PARTNERED_SERVER_OWNER: "public/badges/discord-partner.svg",
-	LEGACY_USER: "/public/badges/legacy-username.svg",
-	NITRO: "/public/badges/nitro.svg",
+		"./public/badges/early-verified-bot-developer.svg",
+	PARTNERED_SERVER_OWNER: "./public/badges/discord-partner.svg",
+	LEGACY_USER: "./public/badges/legacy-username.svg",
+	NITRO: "./public/badges/nitro.svg",
 };
 
 // Logic for tooltips
