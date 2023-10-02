@@ -130,6 +130,23 @@ tooltips.forEach((tooltip) => {
 	});
 });
 
+// const links = document.querySelectorAll("a");
+
+// links.forEach((link) => {
+// 	const href = link.getAttribute("href");
+// 	link.setAttribute("title", href);
+// });
+
+const anchors = document.getElementsByTagName("a");
+
+for (let i = 0; i < anchors.length; i++) {
+	const anchor = anchors[i];
+	const href = anchor.getAttribute("href");
+	if (href) {
+		anchor.setAttribute("title", href);
+	}
+}
+
 // Fetch Discord status on page load
 fetchDiscordStatus();
 // Fetch Discord status every 6 seconds
