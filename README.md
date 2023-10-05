@@ -1,5 +1,5 @@
 # 🌐 Discord Profile Card
-<img src="https://raw.githubusercontent.com/MiyagawaMizu/miyagawamizu.github.io/main/preview.png" alt="Preview of Discord-Status" width="100%" height="100%">
+<img src="https://raw.githubusercontent.com/MiyagawaMizu/card/main/preview.png" alt="Preview of Discord-Status" width="100%" height="100%">
 
 ## 📝 Features
 
