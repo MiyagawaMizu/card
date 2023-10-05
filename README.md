@@ -9,7 +9,7 @@
 - [x] Show Discord Discriminator
 - [x] Show Discord Avatar
 - [x] Show Discord Banner
-- [x] Show Discord Badges (only 2)
+- [ ] Show Discord Badges
 - [ ] Show Discord Bio
 - [x] Responsive for mobile
 
