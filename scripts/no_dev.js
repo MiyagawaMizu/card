@@ -6,24 +6,15 @@ function ctrlShiftKey(e, keyCode) {
 }
 
 // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
-// document.onkeydown = (e) => {
-// 	if (
-// 		event.keyCode === 123 ||
-// 		ctrlShiftKey(e, "I") ||
-// 		ctrlShiftKey(e, "J") ||
-// 		ctrlShiftKey(e, "C") ||
-// 		(e.ctrlKey && e.keyCode === "U".charCodeAt(0))
-// 	) {
-// 		return false;
-// 	}
-// };
+document.onkeydown = (e) => {
+	if (
+		event.keyCode === 123 ||
+		ctrlShiftKey(e, "I") ||
+		ctrlShiftKey(e, "J") ||
+		ctrlShiftKey(e, "C") ||
+		(e.ctrlKey && e.keyCode === "U".charCodeAt(0))
+	) {
+		return false;
+	}
+};
 
-// Pause and play audio on click of the Avatar image (my smol easter egg)
-// var myAudio = document.getElementById("my-audio");
-// function togglePlay() {
-// 	if (myAudio.paused) {
-// 		myAudio.play();
-// 	} else {
-// 		myAudio.pause();
-// 	}
-// }
