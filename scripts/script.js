@@ -65,8 +65,7 @@ async function fetchDiscordStatus() {
 		}
 
 		if (banner.id == null) {
-			elements.bannerImage.src =
-				"https://cdn.discordapp.com/attachments/1104468941012746240/1162045939310145558/95202766_p0.webp";
+			elements.bannerImage.src = "./public/banner.png";
 		} else {
 			elements.bannerImage.src = `https://cdn.discordapp.com/banners/${discord_user.id}/${banner.id}?format=webp&size=1024`;
 			elements.bannerImage.alt = `Discord banner: ${discord_user.username}`;
