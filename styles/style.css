@@ -147,7 +147,9 @@ body {
   --primary-l-top: 95%;
   --primary-s-bottom: 44%;
   --primary-l-bottom: 94%;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   border-radius: 50%;
   top: 120px;
@@ -159,17 +161,17 @@ body {
   height: 120px;
   border-radius: 50%;
   padding: 8px;
+  background-color: hsl(210, 44%, 94%);
   --primary-s-top: 42%;
   --primary-l-top: 95%;
   --primary-s-bottom: 44%;
   --primary-l-bottom: 94%;
-  background-color: hsl(210, 44%, 94%);
 }
 
 #avatar-decoration {
-  position: absolute;
   width: 140px;
   height: 140px;
+  position: absolute;
   inset: 0;
   margin: auto;
 }
@@ -562,6 +564,11 @@ body {
   .avatar #avatar-image {
     width: 86px;
     height: 86px;
+  }
+
+  #avatar-decoration {
+    width: 103px;
+    height: 103px;
   }
 
   .name-box {
