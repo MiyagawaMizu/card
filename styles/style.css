@@ -29,7 +29,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: hsl( var(--primary-h-top), 45%, 50%, 0.1);
+  background-color: hsl(var(--primary-h-top), 45%, 50%, 0.1);
   border-radius: 10px;
 }
 
@@ -50,20 +50,18 @@ img {
   animation: fadeIn 1s ease-in forwards;
 }
 
-a {
+.about-section a {
   color: #00aff4;
   text-decoration: none;
 }
 
-a:hover {
+.about-section a:hover {
   text-decoration: underline;
-  cursor: url('https://raw.githubusercontent.com/MiyagawaMizu/card/main/public/help.png'), auto;
 }
 
 body {
   padding: 0;
   margin: 0;
-  cursor: url('https://raw.githubusercontent.com/MiyagawaMizu/card/main/public/cursor.png'), auto;
 }
 
 .box-color {
@@ -140,7 +138,6 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  cursor: url('https://raw.githubusercontent.com/MiyagawaMizu/card/main/public/no.png'), auto;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
@@ -167,7 +164,14 @@ body {
   --primary-s-bottom: 44%;
   --primary-l-bottom: 94%;
   background-color: hsl(210, 44%, 94%);
-  cursor: url('https://raw.githubusercontent.com/MiyagawaMizu/card/main/public/no.png'), auto;
+}
+
+#avatar-decoration {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  inset: 0;
+  margin: auto;
 }
 
 .status {
@@ -454,6 +458,7 @@ body {
   -ms-flex-align: center;
   align-items: center;
   box-shadow: 0 0 0 1px var(--box-shadow-color);
+  text-decoration: none;
 }
 
 .platform-username {
@@ -466,13 +471,13 @@ body {
   flex-grow: 1;
 }
 
+.platform::hover {
+  text-decoration: none;
+}
+
 .platform-icon {
   width: 24px;
   height: 24px;
-}
-
-#link {
-  cursor: url('https://raw.githubusercontent.com/MiyagawaMizu/card/main/public/help.png'), auto;
 }
 
 .connect {

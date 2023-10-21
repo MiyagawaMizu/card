@@ -4,6 +4,7 @@ const elements = {
 	statusBox: document.getElementById("status"),
 	statusImage: document.getElementById("status-image"),
 	avatarImage: document.getElementById("avatar-image"),
+	avaterDecoration: document.getElementById("avatar-decoration"),
 	bannerImage: document.getElementById("banner-image"),
 	bannerColor: document.querySelector(".banner"),
 	displayName: document.querySelector(".display-name"),
@@ -64,11 +65,20 @@ async function fetchDiscordStatus() {
 			imagePath = "./public/status/streaming.svg";
 		}
 
+		// Banner
 		if (banner.id == null) {
 			elements.bannerImage.src = "./public/banner.png";
 		} else {
 			elements.bannerImage.src = `https://cdn.discordapp.com/banners/${discord_user.id}/${banner.id}?format=webp&size=1024`;
 			elements.bannerImage.alt = `Discord banner: ${discord_user.username}`;
+		}
+
+		// Avatar decorations
+		if (discord_user.avatar_decoration_data == null) {
+			// elements.avaterDecoration.style.display = "none";
+			elements.avaterDecoration.src = `https://cdn.discordapp.com/avatar-decoration-presets/a_5087f7f988bd1b2819cac3e33d0150f5.webp`;
+		} else {
+			elements.avaterDecoration.src = `https://cdn.discordapp.com/avatar-decoration-presets/${discord_user.avatar_decoration_data.asset}?format=webp&size=1024`;
 		}
 
 		elements.statusImage.src = imagePath;
