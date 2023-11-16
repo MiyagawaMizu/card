@@ -172,8 +172,9 @@ body {
   width: 140px;
   height: 140px;
   position: absolute;
-  inset: 0;
-  margin: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .status {
@@ -521,6 +522,10 @@ body {
   box-shadow: 0 0 0 1px var(--box-shadow-color);
   padding: 10px 10px 10px 10px;
   border-radius: 5px;
+}
+
+.chat-container {
+  display: none !important;
 }
 
 #message-input {
