@@ -67,7 +67,8 @@ async function fetchDiscordStatus() {
 
 		// Banner
 		if (banner.id == null) {
-			elements.bannerImage.src = "./public/banner.png";
+			elements.bannerImage.src =
+				"https://cdn.discordapp.com/attachments/1104468941012746240/1174709500729622619/a_0559d4a762f9f3a77da4804b051029ef.gif";
 		} else {
 			elements.bannerImage.src = `https://cdn.discordapp.com/banners/${discord_user.id}/${banner.id}?format=webp&size=1024`;
 			elements.bannerImage.alt = `Discord banner: ${discord_user.username}`;
@@ -76,7 +77,9 @@ async function fetchDiscordStatus() {
 		// Avatar decorations
 		if (discord_user.avatar_decoration_data == null) {
 			// elements.avaterDecoration.style.display = "none";
-			elements.avaterDecoration.src = "https://cdn.discordapp.com/avatar-decoration-presets/a_5087f7f988bd1b2819cac3e33d0150f5.webp";
+			elements.avaterDecoration.src =
+				// "https://cdn.discordapp.com/avatar-decoration-presets/a_5087f7f988bd1b2819cac3e33d0150f5.webp";
+				"https://cdn.discordapp.com/avatar-decoration-presets/a_55c9d0354290afa8b7fe47ea9bd7dbcf.webp";
 		} else {
 			elements.avaterDecoration.src = `https://cdn.discordapp.com/avatar-decoration-presets/${discord_user.avatar_decoration_data.asset}?format=webp&size=1024`;
 		}
