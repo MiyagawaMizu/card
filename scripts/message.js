@@ -1,6 +1,5 @@
 // TODO: hiding the webhook URL in cloudflare /functions
-const webhookURL =
-	"https://discord.com/api/webhooks/1155563529894641845/rv1eePD0COstB_zkJTZAF43gBEYuukSt0PQ6hm0I8CaLm9T18mxbmdY2U5Icpkxg45ur";
+const webhookURL = "https://discord.com/api/webhooks/";
 const messageInput = document.getElementById("message-input");
 
 let lastMessageTime = 0;
