@@ -115,20 +115,6 @@ async function fetchDiscordStatus() {
 	}
 }
 
-// Mapping badges to their respective images
-const badgeMappings = {
-	HOUSE_BRILLIANCE: "./public/badges/hypesquad-brilliance.svg",
-	ACTIVE_DEVELOPER: "./public/badges/active-developer.svg",
-	HOUSE_BRAVERY: "./public/badges/hypesquad-bravery.svg",
-	HOUSE_BALANCE: "./public/badges/hypesquad-balance.svg",
-	EARLY_SUPPORTER: "./public/badges/early-supporter.svg",
-	EARLY_VERIFIED_BOT_DEVELOPER:
-		"./public/badges/early-verified-bot-developer.svg",
-	PARTNERED_SERVER_OWNER: "./public/badges/discord-partner.svg",
-	LEGACY_USER: "./public/badges/legacy-username.svg",
-	NITRO: "./public/badges/nitro.svg",
-};
-
 // Logic for tooltips
 const tooltips = document.querySelectorAll(".tooltip");
 tooltips.forEach((tooltip) => {
