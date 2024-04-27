@@ -168,9 +168,9 @@ body {
   --primary-l-bottom: 94%;
 }
 
-#avatar-decoration {
-  width: 140px;
-  height: 140px;
+.avatar-decoration {
+  width: 170px;
+  height: 170px;
   position: absolute;
   top: 50%;
   left: 50%;
