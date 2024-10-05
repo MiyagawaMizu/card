@@ -7,8 +7,8 @@
 - [x] Show Discord Status
 - [x] Show Discord Username
 - [x] Show Discord Discriminator
-- [x] Show Discord Avatar
-- [x] Show Discord Banner
+- [ ] Show Discord Avatar
+- [ ] Show Discord Banner
 - [ ] Show Discord Badges
 - [ ] Show Discord Bio
 - [x] Responsive for mobile
