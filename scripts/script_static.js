@@ -1,4 +1,4 @@
-const userID = "738748102311280681"; // Change this to your Discord user ID
+const userID = "738748102311280681"; // Thay đổi thành ID Discord của bạn
 
 const elements = {
 	statusBox: document.getElementById("status"),
@@ -15,111 +15,101 @@ const elements = {
 	customStatusEmoji: document.getElementById("custom-status-emoji"),
 };
 
-async function fetchDiscordStatus() {
-	try {
-		const [lanyardResponse] = await Promise.all([
-			fetch(`https://api.lanyard.rest/v1/users/${userID}`).then((response) =>
-				response.json()
-			),
-		]);
+// Kết nối WebSocket với Lanyard API
+function startWebSocket() {
+	const ws = new WebSocket("wss://api.lanyard.rest/socket");
 
-		const lanyardData = lanyardResponse.data;
+	ws.onopen = () => {
+		ws.send(
+			JSON.stringify({
+				op: 2, // Subscribe operation
+				d: {
+					subscribe_to_id: userID,
+				},
+			})
+		);
+	};
 
-		const { discord_status, activities, discord_user, emoji } = lanyardData;
-
-		elements.displayName.innerHTML = discord_user.display_name;
-		elements.username.innerHTML = discord_user.username;
-
-		let imagePath;
-		switch (discord_status) {
-			case "online":
-				imagePath = "./public/status/online.svg";
-				break;
-			case "idle":
-				imagePath = "./public/status/idle.svg";
-				break;
-			case "dnd":
-				imagePath = "./public/status/dnd.svg";
-				break;
-			case "offline":
-				imagePath = "./public/status/offline.svg";
-				break;
-			default:
-				imagePath = "./public/status/offline.svg";
-				break;
+	ws.onmessage = (event) => {
+		const { t, d } = JSON.parse(event.data);
+		if (t === "INIT_STATE" || t === "PRESENCE_UPDATE") {
+			updateStatus(d);
 		}
+	};
 
-		if (
-			activities.find(
-				(activity) =>
-					activity.type === 1 &&
-					(activity.url.includes("twitch.tv") ||
-						activity.url.includes("youtube.com"))
-			)
-		) {
-			imagePath = "./public/status/streaming.svg";
-		}
+	ws.onerror = (error) => {
+		console.error("Lỗi WebSocket:", error);
+		ws.close();
+	};
 
-		elements.statusImage.src = imagePath;
-		elements.statusImage.alt = `Discord status: ${discord_status}`;
+	ws.onclose = () => {
+		console.log("WebSocket đóng, thử kết nối lại...");
+		setTimeout(startWebSocket, 1000); // Tự động kết nối lại sau 1 giây
+	};
+}
 
+function updateStatus(lanyardData) {
+	const { discord_status, activities, discord_user } = lanyardData;
 
-		elements.customStatusText.innerHTML =
-			activities[0].state != null ? activities[0].state : "Not doing anything!";
+	elements.displayName.innerHTML = discord_user.display_name;
+	elements.username.innerHTML = discord_user.username;
 
-		if (activities[0].emoji == null) {
-			elements.customStatusEmoji.style.display = "none";
-		} else {
-			elements.customStatusEmoji.src = `https://cdn.discordapp.com/emojis/${activities[0].emoji.id}?format=webp&size=24&quality=lossless`;
-			elements.customStatusEmoji.style.marginRight = "5px";
-		}
+	let imagePath;
+	switch (discord_status) {
+		case "online":
+			imagePath = "./public/status/online.svg";
+			break;
+		case "idle":
+			imagePath = "./public/status/idle.svg";
+			break;
+		case "dnd":
+			imagePath = "./public/status/dnd.svg";
+			break;
+		case "offline":
+			imagePath = "./public/status/offline.svg";
+			break;
+		default:
+			imagePath = "./public/status/offline.svg";
+			break;
+	}
 
-		if (activities[0].state == null && activities[0].emoji == null) {
-			elements.customStatus.style.display = "none";
-			elements.customStatusEmoji.style.display = "none";
-			elements.customStatusText.style.display = "none";
-			elements.customStatus.removeAttribute("style");
-			elements.customStatusEmoji.removeAttribute("style");
-			elements.customStatusText.removeAttribute("style");
-		} else {
-			elements.customStatus.style.display = "flex";
-		}
-	} catch (error) {
-		console.error("Unable to retrieve Discord status:", error);
+	// Kiểm tra hoạt động streaming
+	if (
+		activities.some(
+			(activity) =>
+				activity.type === 1 &&
+				(activity.url.includes("twitch.tv") ||
+					activity.url.includes("youtube.com"))
+		)
+	) {
+		imagePath = "./public/status/streaming.svg";
+	}
+
+	elements.statusImage.src = imagePath;
+	elements.statusImage.alt = `Discord status: ${discord_status}`;
+
+	// Cập nhật custom status
+	if (activities[0]?.state) {
+		elements.customStatusText.innerHTML = activities[0].state;
+	} else {
+		elements.customStatusText.innerHTML = "Not doing anything!";
+	}
+
+	if (activities[0]?.emoji) {
+		elements.customStatusEmoji.src = `https://cdn.discordapp.com/emojis/${activities[0].emoji.id}?format=webp&size=24&quality=lossless`;
+		elements.customStatusEmoji.style.display = "inline-block";
+		elements.customStatusEmoji.style.marginRight = "5px";
+	} else {
+		elements.customStatusEmoji.style.display = "none";
+	}
+
+	// Hiển thị hoặc ẩn custom status
+	if (!activities[0]?.state && !activities[0]?.emoji) {
+		elements.customStatus.style.display = "none";
+	} else {
+		elements.customStatus.style.display = "flex";
 	}
 }
 
-// Logic for tooltips
-const tooltips = document.querySelectorAll(".tooltip");
-tooltips.forEach((tooltip) => {
-	tooltip.addEventListener("mouseenter", () => {
-		const ariaLabel = tooltip.getAttribute("aria-label");
-		tooltip.setAttribute("data-tooltip-content", ariaLabel);
-	});
-
-	tooltip.addEventListener("mouseleave", () => {
-		tooltip.removeAttribute("data-tooltip-content");
-	});
-});
-
-// const links = document.querySelectorAll("a");
-
-// links.forEach((link) => {
-// 	const href = link.getAttribute("href");
-// 	link.setAttribute("title", href);
-// });
-
-const anchors = document.getElementsByTagName("a");
-
-for (let i = 0; i < anchors.length; i++) {
-	const anchor = anchors[i];
-	const href = anchor.getAttribute("href");
-	if (href) {
-		anchor.setAttribute("title", href);
-	}
-}
-
-// Fetch Discord status on page load
-fetchDiscordStatus();
-// Fetch Discord status every 6 seconds
-setInterval(fetchDiscordStatus, 6000);
+// Bắt đầu WebSocket
+startWebSocket();
