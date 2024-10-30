@@ -20,6 +20,26 @@
 // 	}
 // };
 
+// 
+function copyToClipboard() {
+	var text = document.getElementById("textToCopy").innerText;
+	var textArea = document.createElement("textarea");
+	textArea.value = text;
+	document.body.appendChild(textArea);
+	textArea.select();
+	document.execCommand("copy");
+	document.body.removeChild(textArea);
+
+	var textElement = document.getElementById("textToCopy");
+	textElement.classList.add("clicked");
+	textElement.setAttribute("aria-label", "Copied!");
+
+	setTimeout(() => {
+		textElement.classList.remove("clicked");
+		textElement.setAttribute("aria-label", "Click to copy!");
+	}, 2000); // Reset after 2 seconds
+}
+
 // Lấy tất cả các thẻ <img> trên trang
 var images = document.getElementsByTagName("img");
 

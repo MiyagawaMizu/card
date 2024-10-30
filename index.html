@@ -20,6 +20,11 @@
 		<meta name="language" content="English" />
 		<meta name="author" content="MiyagawaMizu" />
 		<meta name="view-transition" content="same-origin" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Playpen+Sans&display=swap"
+			rel="stylesheet" />
 		<link rel="icon" href="./public/mahiro_flex.ico" />
 		<link rel="stylesheet" href="./styles/style.css" />
 		<link
@@ -54,7 +59,7 @@
 									class="avatar-decoration"
 									src="./public/lumine_avatar_frame.webp"
 									alt="" />
-								<div class="status box-color">
+								<div class="status box-color tooltip">
 									<img
 										id="status-image"
 										src="./public/status/offline.svg"
@@ -68,10 +73,7 @@
 								<a class="tooltip" aria-label="HypeSquad Brilliance">
 									<img alt=" " src="./public/badges/hypesquad-brilliance.svg"
 								/></a>
-								<a
-									class="tooltip"
-									id="active-developer"
-									aria-label="Active Developer">
+								<a class="tooltip" aria-label="Active Developer">
 									<img alt=" " src="./public/badges/active-developer.svg"
 								/></a>
 								<a class="tooltip" aria-label="Subscriber since Jan 26, 2023">
@@ -91,7 +93,11 @@
 					<div class="card box-color">
 						<div class="name-box">
 							<span class="display-name">Mizu</span>
-							<span class="username">miyagawamizu</span>
+							<button
+								class="id username"
+								id="textToCopy"
+								aria-label="Click to copy!"
+								onclick="copyToClipboard()"></button>
 							<span class="pronouns">Hà Thủy</span>
 							<div class="custom-status">
 								<img id="custom-status-emoji" />
@@ -188,7 +194,7 @@
 												alt=" "
 												aria-hidden="true"
 												src="./public/platforms/tiktok.svg" />
-											<div class="text-base platform-username">𝙼𝚒𝚣𝚞ᯓ☆</div>
+											<div class="text-base platform-username">Mízù</div>
 											<div
 												href="http://fb.com/MiyagawaMizu/"
 												rel="noreferrer noopener"
@@ -262,9 +268,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- <script src="./scripts/script.js"></script> -->
-		<script src="./scripts/scriptstatic.js"></script>
-		<script src="./scripts/sub.js"></script>
-		<!-- <script src="./scripts/message.js"></script> -->
+		<script async src="./scripts/script.js"></script>
+		<script defer src="./scripts/sub.js"></script>
 	</body>
 </html>

@@ -1,5 +1,5 @@
 /* @import url(https://cdn.jsdelivr.net/gh/Overimagine1/old-discord-font/source.min.css); */
-@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap'); */
 
 * {
   /* font-family: "Whitney", sans-serif; */
@@ -195,7 +195,101 @@ body {
   border-radius: 50%;
 }
 
+.tooltip {
+  font-size: 0.9em;
+}
+
+*:hover.tooltip::after {
+  content: attr(aria-label);
+  width: max-content;
+  position: absolute;
+  bottom: 11px;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  background-color: #111214;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 2;
+  font-size: 0.8em !important;
+}
+
+*:hover.tooltip::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  border: 5px solid transparent;
+  border-top-color: #111214;
+}
+
+
+.status:hover.tooltip::after {
+  bottom: 24px;
+}
+
+.status:hover.tooltip::before {
+  bottom: 15px;
+}
+
+.id {
+  position: relative;
+  margin: 0;
+  border: none;
+  background: none;
+  display: flex;
+  text-align: start;
+  font-size: 0.8em;
+  padding: 0;
+  cursor: pointer;
+  font-family: "Playpen Sans", cursive;
+}
+
+.id::after {
+  content: attr(aria-label);
+  width: max-content;
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #111214;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  visibility: hidden;
+  font-size: 0.8em;
+}
+
+.id:hover::after {
+  visibility: visible;
+}
+
+.id::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid transparent;
+  border-top-color: #111214;
+  visibility: hidden;
+}
+
+.id:hover::before {
+  visibility: visible;
+}
+
+.id.clicked::after {
+  background-color: #23a559;
+}
+
+.id.clicked::before {
+  border-top-color: #23a559;
+}
+
 #status-image {
+  position: relative;
   width: 20px;
   height: 20px;
   padding: 7px;
@@ -240,34 +334,12 @@ body {
   height: 26px;
 }
 
-.tooltip {
-  display: block;
-  flex-direction: row;
+.badges-right>a {
   position: relative;
-  width: 26px;
-  height: 26px;
 }
 
-.tooltip:hover::after {
-  content: attr(aria-label);
-  position: absolute;
-  top: -77px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #111214;
-  color: #fff;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.tooltip:hover::before {
-  content: "";
-  position: absolute;
-  top: -19px;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 5px solid transparent;
-  border-top-color: #111214;
+.badges-left>a {
+  position: relative;
 }
 
 .card {
@@ -290,6 +362,10 @@ body {
   padding-left: 5px;
 }
 
+.name-box * {
+  width: fit-content;
+}
+
 .display-name {
   font-size: 20px;
   color: var(--text-color);
@@ -300,13 +376,14 @@ body {
   color: var(--text-color);
   font-weight: 600;
   border-radius: 50%;
+  font-size: 0.9em;
 }
 
 .pronouns {
   color: var(--text-color);
   font-weight: 400;
   font-size: 14px;
-  margin: 3px 0px 5px 0px;
+  margin: 3px 0 0px 0;
 }
 
 .custom-status {
@@ -319,16 +396,15 @@ body {
 }
 
 .custom-status img {
-  width: fit-content;
-  height: fit-content;
+  width: 24px !important;
+  height: 24px !important;
+  object-fit: cover;
+  image-rendering: pixelated;
 }
 
-.custom-status .custom-status-text {
+.custom-status-text {
   margin: 0px;
   padding: 0px;
-  align-items: center;
-  display: flex;
-  color: var(--text-color);
   font-weight: 400;
 }
 
@@ -468,7 +544,7 @@ body {
 
 .platform-username {
   color: var(--text-color);
-  font-size: 16px;
+  font-size: 0.9em;
   font-weight: 600;
   margin-left: 10px;
   -webkit-box-flex: 1;
